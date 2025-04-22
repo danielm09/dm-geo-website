@@ -28,5 +28,5 @@ st.markdown("""
             a CSV file and classifying images. The outputs include the predicted class and the 
             classification probabilities.
             """)
-st.image("./assets/georasterRF/georasterRF_gui.jpg",
+st.image("./assets/georasterRF/georasterRF_gui.JPG",
          caption="Graphical User Interface of the app.")
