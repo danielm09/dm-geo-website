@@ -9,7 +9,7 @@ with col1:
 with col2:
     st.title("Daniel Moraes", anchor=False)
     st.write("Geospatial Data Scientist")
-    st.write("Machine learning and Earth Observation enthusiast")
+    st.write("Machine Learning and Earth Observation enthusiast")
     st.write('<i class="fa-solid fa-location-dot fa-fw"></i> Lisbon, Portugal', unsafe_allow_html=True)
 
 #SKILLS AND EDUCATION
