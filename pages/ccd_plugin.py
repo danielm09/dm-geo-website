@@ -4,7 +4,7 @@ st.title("CCD-Plugin for QGIS")
 st.caption("(Co-developer)")
 
 
-col1, col2 = st.columns([1.75,1], vertical_alignment="center")
+col1, col2 = st.columns([2.5,1], vertical_alignment="center")
 with col1:
     st.markdown("### Overview")
     st.markdown("""
