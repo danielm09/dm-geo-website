@@ -1,0 +1,43 @@
+name: Build and Publish Image to Docker Hub
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/geoquery_img:latest
+    - name: Push image to docker hub
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/geoquery_img:latest
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Deploy to AWS EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.AWSEC2_HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.AWSEC2_SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/dmgeowebsite:latest
+            docker stop website_container
+            docker rm website_container
+            docker run -d --name website_container -p 8502:8502 ${{ secrets.DOCKER_USERNAME }}/dmgeowebsite:latest
+            docker image prune -f
+    
