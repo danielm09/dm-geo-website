@@ -14,5 +14,7 @@ st.markdown("""
             configured to use local LLMs via **Ollama**. The chat UI is based on **streamlit** and 
             the app is encapsulated in a **docker container**.
 
-            [![View_App](https://img.shields.io/badge/GeoQuery-View_app-white?logo=streamlit)](http://www.dm-geo.com/geoquery) ![Check_status](https://img.shields.io/website?url=https%3A%2F%2Fdm-geo.com%2Fgeoquery%2Fhealthz&label=App%20status)
+            ![Check_status](https://img.shields.io/website?url=https%3A%2F%2Fdm-geo.com%2Fgeoquery%2Fhealthz&label=App%20status)
             """)
+
+st.page_link("https://dm-geo.com/geoquery", label="Check GeoQuery App Here", icon=":material/link:")
