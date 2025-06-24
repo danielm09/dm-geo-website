@@ -2,7 +2,7 @@ import streamlit as st
 
 st.title("S2CHANGE")
 
-st.caption("(Colaborator)")
+st.caption("(Collaborator)")
 
 col1, col2 = st.columns([1.75,1], vertical_alignment="center")
 with col1:
