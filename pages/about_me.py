@@ -25,7 +25,7 @@ st.markdown("""
 
 st.markdown("""
             ## Education
-            - PhD Candidate in Geoinformatics @ Nova IMS, Universidade Nova de Lisboa
+            - PhD in Geoinformatics @ Nova IMS, Universidade Nova de Lisboa
             - Master’s degree in Geographic Information Systems and Science @ Nova IMS, Universidade Nova de Lisboa
             """)
 
