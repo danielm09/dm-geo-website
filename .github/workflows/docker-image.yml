@@ -3,8 +3,6 @@ name: Build and Publish Image to Docker Hub
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
 
@@ -30,6 +28,8 @@ jobs:
           key: ${{ secrets.AWSEC2_SSH_KEY }}
           source: "docker-compose.yml"
           target: "~/dm-geo-website" # Place it in the home directory
+          strip_components: 0 # Ensures it doesn't create extra nested paths
+          overwrite: true
 
   deploy:
 
