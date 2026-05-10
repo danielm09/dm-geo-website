@@ -50,7 +50,7 @@ jobs:
             git pull origin main
 
             # 3. run docker compose
-            docker-compose pull
-            docker-compose up -d
+            docker compose pull
+            docker compose up -d
             docker image prune -f
     
