@@ -13,21 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Build the Docker image
-      uses: actions/checkout@v4
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/dmgeowebsite:latest
-    - name: Push image to docker hub
-      run: |
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
-        docker push ${{ secrets.DOCKER_USERNAME }}/dmgeowebsite:latest
-    - name: Copy docker-compose.yml to EC2
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.AWSEC2_HOST_DNS }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.AWSEC2_SSH_KEY }}
-        source: "docker-compose.yml"
-        target: "~/dm-geo-website" # Place it in the home directory
+      - uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/dmgeowebsite:latest
+      - name: Push image to docker hub
+        run: |
+          echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push ${{ secrets.DOCKER_USERNAME }}/dmgeowebsite:latest
+
+      - name: Copy docker-compose.yml to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.AWSEC2_HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.AWSEC2_SSH_KEY }}
+          source: "docker-compose.yml"
+          target: "~/dm-geo-website" # Place it in the home directory
 
   deploy:
 
