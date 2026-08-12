@@ -18,7 +18,7 @@ st.markdown("""
             - Deep learning, self-supervised learning, masked autoencoders, convolutional neural networks, random forest
             - Python: pandas, geopandas, rasterio, gdal, xarray, dask, pytorch, tensorflow, scikit-learn
             - PostgreSQL, PostGIS
-            - Cloud computing (AWS Cloud Practitioner Certificate)
+            - Cloud computing (AWS Cloud Practitioner Certificate), HPC, Linux
             - Docker, CI/CD
             - QGIS, ArcGIS, Google Earth Engine
             """)
